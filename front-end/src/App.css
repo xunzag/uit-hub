@@ -1,0 +1,257 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+button {
+  padding: 17px 40px;
+  border-radius: 50px;
+  border: 0;
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all .5s ease;
+ }
+ 
+ button:hover {
+  letter-spacing: 3px;
+  background-color: hsl(261deg 80% 48%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+ }
+ 
+ button:active {
+  letter-spacing: 3px;
+  background-color: hsl(261deg 80% 48%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 100ms;
+ }
+
+ /* App.css */
+
+/* App.css */
+
+/* Login */
+#login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 91.2vh;
+  background: url("C:\Users\Wazir Ali\OneDrive\Desktop\lern\front-end\src\images\bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login {
+  background-color: white;
+  padding: 25px;
+  max-width: 400px; /* Adjust the width as needed */
+  border-radius: 12px;
+
+}
+
+.login .form-group {
+  margin-bottom: 20px;
+}
+
+.login .form-group label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.login .form-group input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color: transparent;
+}
+
+.login .centered {
+  text-align: center;
+}
+
+.login h1.form-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+.login .image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.login .login-image {
+  width: 100px; /* Adjust the width as needed */
+  height: auto;
+}
+
+.login .navlink-wrapper {
+  margin-left: 10px;
+}
+
+.login .nav-link {
+  color: #333;
+  text-decoration: none;
+}
+
+
+.signup {
+  background-color: #f5f5f5;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: 8px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.signup-content {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-wrapper {
+  display: flex;
+}
+
+.input-wrapper {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-group1 {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+label {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+i.zmdi {
+  margin-right: 10px;
+}
+
+.form-input {
+  border: none;
+  border-bottom: 1px solid #999;
+  outline: none;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  transition: border-bottom-color 0.3s;
+}
+
+.form-input:focus {
+  border-bottom-color: #ff8a65;
+}
+
+.form-image {
+  text-align: right;
+}
+
+.centered {
+  text-align: center;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-submit {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-submit:hover {
+  background-color: #555;
+}
+
+.nav-link {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #333;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+  }
+}
+
+

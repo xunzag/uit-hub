@@ -1,0 +1,35 @@
+.home-container {
+    background-image: url('./images/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+  }
+  
+  .home-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .home-heading {
+    font-size: 40px;
+  }
+  
+  .home-text {
+    font-size: 24px;
+  }
+  
+  .home-button {
+    font-size: 20px;
+    padding: 12px 24px;
+  }
+  
+
+  
+  
