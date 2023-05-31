@@ -1,7 +1,40 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useState} from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export const Login = () => {
+
+  const navigate = useNavigate();
+  
+  const [email,setEmail] = useState('');
+  const[password,setPassword] = useState('')
+
+    const loginUser = async (e) => {
+      e.preventDefault();
+
+      const res = await fetch('/signin' ,{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          email,
+          password
+        })
+      })
+
+      const data = res.json();
+
+      if(res.status === 400 || !data) {
+        window.alert("Invalid Credentials")
+      } else {
+        window.alert("Login Succesfull")
+
+        navigate("../profile");
+      }
+
+    }
+ 
+
   return (
     <div id='login'>
       <section className="login">
@@ -10,7 +43,7 @@ export const Login = () => {
             <div className="form-wrapper">
               <div className="input-wrapper">
                 <h1 className="form-title">Login</h1>
-                <form className="login-form" id="login-form">
+                <form method='POST' className="login-form" id="login-form">
                   <div className="form-group">
                     <input
                       type="email"
@@ -18,6 +51,8 @@ export const Login = () => {
                       id="email"
                       autoComplete="off"
                       placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       className="form-input"
                     />
                     <label htmlFor="email" className="input-icon">
@@ -30,6 +65,8 @@ export const Login = () => {
                       name="password"
                       id="password"
                       autoComplete="off"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       placeholder="Password"
                       className="form-input"
                     />
@@ -38,7 +75,7 @@ export const Login = () => {
                     </label>
                   </div>
                   <div className="centered">
-                    <button>Login</button>
+                    <button onClick={loginUser}>Login</button>
                   </div>
                   <div className="centered">
                     <NavLink to="/signup" className="nav-link">

@@ -22,28 +22,16 @@ const middleware = (req, res, next) => {
     next();
 }
 
- // Use the middleware for all routes
-
-// app.get('/', middleware, (req, res) => {
-//     res.render('index');
+ 
+// app.get('/about', (req, res) => {
+//     res.send('Hello About');
 // });
-
-app.get('/about', (req, res) => {
-    res.send('Hello About');
-});
 
 app.get('/contact', (req, res) => {
     // res.cookie("Test", 'xun');
     res.send('Hello Contact');
 });
 
-app.get('/login', (req, res) => {
-    res.sned('Yo Nigga');
-});
-
-app.get('/signup', (req, res) => {
-    res.send('Hello Registration');
-});
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

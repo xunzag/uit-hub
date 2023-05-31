@@ -40,9 +40,9 @@ router.get('/', (req, res) => {
 
 router.post('/register', async (req,res) => {
 
-    const {name, email, batch, rollno, phone, work, password, cpassword} = req.body;
+    const {name, email, batch, rollno, phone, field, password, cpassword} = req.body;
 
-    if(!name || !email || !batch || !rollno || !phone || !work || !password || !cpassword) {
+    if(!name || !email || !batch || !rollno || !phone || !field || !password || !cpassword) {
         return res.status(422).json({ error: "Please fill all the fields properly"})
     }
 
@@ -57,7 +57,7 @@ router.post('/register', async (req,res) => {
     } else if (password != cpassword) {
         return res.status(422).json({ error:"Password do not match"})
     } else {
-        const user = new User({name, email, phone, work, password, cpassword})
+        const user = new User({name, email, batch, rollno, phone, field, password, cpassword})
     
 
 
@@ -130,6 +130,9 @@ router.post('/signin', async (req,res) => {
     }
 })
 
+router.get('/about', authenticate (req, res) => {
+    res.send('Hello About');
+});
 
 
 

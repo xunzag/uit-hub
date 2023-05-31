@@ -1,8 +1,12 @@
 import React from 'react'
+import cutie from "../images/cutie.jpg"
+
 
 function Profile() {
   return (
-    <div>Profile</div>
+    <div className="image-container">
+      <img src={cutie} alt="Centered Image" className="centered-image" />
+    </div>
   )
 }
 

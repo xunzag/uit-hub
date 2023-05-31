@@ -36,6 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
 button {
   padding: 17px 40px;
   border-radius: 50px;
@@ -46,30 +47,39 @@ button {
   text-transform: uppercase;
   font-size: 15px;
   transition: all .5s ease;
- }
- 
- button:hover {
+}
+
+button:hover {
   letter-spacing: 3px;
   background-color: hsl(261deg 80% 48%);
   color: hsl(0, 0%, 100%);
   box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
- }
- 
- button:active {
+}
+
+button:active {
   letter-spacing: 3px;
   background-color: hsl(261deg 80% 48%);
   color: hsl(0, 0%, 100%);
   box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
   transform: translateY(10px);
   transition: 100ms;
- }
+}
 
- /* App.css */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust the height as needed */
+}
 
-/* App.css */
+.centered-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 
 /* Login */
-#login{
+#login {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,7 +96,6 @@ button {
   padding: 25px;
   max-width: 400px; /* Adjust the width as needed */
   border-radius: 12px;
-
 }
 
 .login .form-group {
@@ -115,7 +124,6 @@ button {
   margin-bottom: 20px;
 }
 
-
 .login .image-wrapper {
   display: flex;
   align-items: center;
@@ -136,7 +144,6 @@ button {
   color: #333;
   text-decoration: none;
 }
-
 
 .signup {
   background-color: #f5f5f5;
@@ -241,17 +248,15 @@ i.zmdi {
   text-decoration: none;
 }
 
-
-
-
-
-
-
 /* Media queries for responsive design */
+
 @media (max-width: 768px) {
   .container {
     padding: 0 10px;
   }
+  
+  .login,
+  .signup-content {
+    max-width: 100%;
+  }
 }
-
-
