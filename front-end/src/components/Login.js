@@ -29,7 +29,7 @@ export const Login = () => {
       } else {
         window.alert("Login Succesfull")
 
-        navigate("../profile");
+        navigate("../");
       }
 
     }
