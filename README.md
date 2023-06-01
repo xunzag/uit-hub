@@ -1,7 +1,7 @@
 # UIT Student Hub
 
 
-UIT Student Hub is a web application currently under development, built on the MERN (MongoDB, Express.js, React.js, Node.js) stack. It aims to provide a platform for university students of the University of Information Technology (UIT) to create profiles and connect with other students within the university.
+UIT Student Hub is a web application currently under development, built on the MERN (MongoDB, Express.js, React.js, Node.js) stack. It aims to provide a platform for university students of the Usman Institue of Technology (UIT) to create profiles and connect with other students within the university.
 
 ## Table of Contents
 
