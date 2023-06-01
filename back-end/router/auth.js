@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const express = require('express');
+const multer = require('multer');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const authenticate = require("../middleware/authenticate")
@@ -13,32 +14,6 @@ const User = require("../model/userSchema")
 router.get('/', (req, res) => {
     res.send('Hello World router js');
 });
-
-// USING PROMISES
-
-// router.post('/register', (req,res) => {
-
-//     const {name, email, phone, work, password, cpassword} = req.body;
-
-//     if(!name || !email || !phone || !work || !password || !cpassword) {
-//         return res.status(422).json({ error: "Please fill all the fields properly"})
-//     }
-
-//     User.findOne({email:email})
-//     .then((userExist) => {
-//         if(userExist) {
-//             return res.status(422).json({ error:"Email already Exist"})
-//         }
-
-//         const user = new User({name, email, phone, work, password, cpassword})
-
-//         user.save().then(() => {
-//             res.status(201).json({message:"User Registered Succesfully"})
-            
-//     }).catch((err)=> res.status(500).json({error: "Failed to Register"}))
-// }).catch(err => {console.log(err)});
-
-// });
 
 // register route
 
@@ -137,6 +112,31 @@ router.post('/signin', async (req,res) => {
 router.get('/profile', authenticate ,(req, res) => {
     res.send(req.rootUser);
 });
+
+
+
+
+router.put('/profile', authenticate, async (req, res) => {
+    try {
+      const { name, batch, rollno, phone, field, profilePicture } = req.body;
+      const user = req.rootUser;
+  
+      if (name) user.name = name;
+      if (batch) user.batch = batch;
+      if (rollno) user.rollno = rollno;
+      if (phone) user.phone = phone;
+      if (field) user.field = field;
+      if (profilePicture) user.profilePicture = profilePicture;
+  
+      await user.save();
+  
+      res.status(200).json({ message: 'Profile updated successfully' });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+  
 
 
 

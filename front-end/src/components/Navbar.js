@@ -3,7 +3,12 @@ import { NavLink } from 'react-router-dom';
 import logo from "../images/logo4.png"
 
 
+
 const Navbar = () => {
+
+  const isloggedIn = localStorage.getItem('loggedin')
+  console.log(isloggedIn)
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -22,9 +27,13 @@ const Navbar = () => {
             <li className="nav-item">
               <NavLink  className="nav-link" to="/contact">Contact</NavLink >
             </li>
-            <li className="nav-item">
+            {
+              !isloggedIn ? <li className="nav-item">
               <NavLink  className="nav-link" to="/login">Login</NavLink >
+            </li> : <li className="nav-item">
+              <NavLink  className="nav-link" to="/login">Logout</NavLink >
             </li>
+            }
             <li className="nav-item">
               <NavLink  className="nav-link" to="/signup">Registration</NavLink >
             </li>

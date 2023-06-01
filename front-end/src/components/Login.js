@@ -28,6 +28,7 @@ export const Login = () => {
         window.alert("Invalid Credentials")
       } else {
         window.alert("Login Succesfull")
+        localStorage.setItem('loggedin',true)
 
         navigate("../");
       }
