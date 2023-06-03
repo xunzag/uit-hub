@@ -4,6 +4,7 @@ const multer = require('multer');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const authenticate = require("../middleware/authenticate")
+const requireAuth = require("../middleware/requireAuth")
 
 const cookieParser = require("cookie-parser");
 router.use(cookieParser());
@@ -114,11 +115,24 @@ router.get('/profile', authenticate ,(req, res) => {
 });
 
 
-
-
-router.put('/profile', authenticate, async (req, res) => {
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'public/profile-pictures');
+    },
+    filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+      const fileExtension = file.originalname.split('.').pop();
+      cb(null, `profilePicture-${uniqueSuffix}.${fileExtension}`);
+    },
+  });
+  
+  
+  const upload = multer({ storage: storage });
+  
+  
+  router.put('/profile', authenticate, upload.single('profilePicture'), async (req, res) => {
     try {
-      const { name, batch, rollno, phone, field, profilePicture } = req.body;
+      const { name, batch, rollno, phone, field } = req.body;
       const user = req.rootUser;
   
       if (name) user.name = name;
@@ -126,16 +140,33 @@ router.put('/profile', authenticate, async (req, res) => {
       if (rollno) user.rollno = rollno;
       if (phone) user.phone = phone;
       if (field) user.field = field;
-      if (profilePicture) user.profilePicture = profilePicture;
+  
+      if (req.file) {
+        user.profilePicture = req.file.filename;
+      }
   
       await user.save();
+      await user.populate('profilePicture').execPopulate();
   
-      res.status(200).json({ message: 'Profile updated successfully' });
+      res.status(200).json(user);
     } catch (err) {
       console.log(err);
       res.status(500).json({ error: 'Internal server error' });
     }
   });
+  
+
+  router.get('/users', requireAuth, async (req, res) => {
+    try {
+        const users = await User.find().select('-password -cpassword -tokens');
+        res.status(200).json(users);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+  
   
 
 

@@ -22,7 +22,7 @@ function Profile() {
         method: 'GET',
         headers: {
           Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
         credentials: 'include',
       });
@@ -57,18 +57,25 @@ function Profile() {
       formData.append('rollno', userData.rollNo);
       formData.append('phone', userData.phone);
       formData.append('field', userData.field);
-      formData.append('profilePicture', userData.profilePicture); // Append profile picture file
-  
+
+      // Send only the file in the form data
+      if (userData.profilePicture instanceof File) {
+        formData.set('profilePicture', userData.profilePicture);
+      }
+
       const res = await fetch('/profile', {
         method: 'PUT',
         headers: {
           Accept: 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
         credentials: 'include',
-        body: formData, // Use formData as the request body
+        body: formData,
       });
-  
+
       if (res.status === 200) {
+        const data = await res.json();
+        setUserData(data);
         setIsEditing(false);
       } else {
         const error = new Error(res.error);
@@ -78,7 +85,6 @@ function Profile() {
       console.log(err);
     }
   };
-  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -90,15 +96,11 @@ function Profile() {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setProfileImage(reader.result);
-      setUserData((prevData) => ({
-        ...prevData,
-        profilePicture: reader.result,
-      }));
-    };
-    reader.readAsDataURL(file);
+    setProfileImage(URL.createObjectURL(file));
+    setUserData((prevData) => ({
+      ...prevData,
+      profilePicture: file,
+    }));
   };
 
   return (
@@ -116,7 +118,10 @@ function Profile() {
                         <img
                           className="rounded-circle mt-5"
                           width="150px"
-                          src={profileImage || 'https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg'}
+                          src={
+                            userData.profilePicture ||
+                            'https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg'
+                          }
                           alt=""
                         />
                       </label>
