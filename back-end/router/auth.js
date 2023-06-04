@@ -166,6 +166,11 @@ const storage = multer.diskStorage({
     }
 });
 
+router.get('/logout', (req,res) => {
+    res.clearCookie("jwtoken", {path:'/'})
+    res.status(200).send('User logout')
+})
+
   
   
 

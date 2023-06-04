@@ -8,6 +8,7 @@ import People from './components/People'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Profile from './components/Profile'
+import Logout from './components/Logout'
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
           <Route path='/about' element={<About />} />
           <Route path='/people' element={<People/>} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/logout' element={<Logout />} />
         </Routes>
     </>
   )

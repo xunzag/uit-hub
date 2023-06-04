@@ -6,8 +6,6 @@ import logo from "../images/logo4.png"
 
 const Navbar = () => {
 
-  const isloggedIn = localStorage.getItem('loggedin')
-  console.log(isloggedIn)
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -27,18 +25,17 @@ const Navbar = () => {
             <li className="nav-item">
               <NavLink  className="nav-link" to="/people">People</NavLink >
             </li>
-            {
-              !isloggedIn ? <li className="nav-item">
+               <li className="nav-item">
               <NavLink  className="nav-link" to="/login">Login</NavLink >
-            </li> : <li className="nav-item">
-              <NavLink  className="nav-link" to="/login">Logout</NavLink >
             </li>
-            }
             <li className="nav-item">
               <NavLink  className="nav-link" to="/signup">Registration</NavLink >
             </li>
             <li className="nav-item">
               <NavLink  className="nav-link" to="/profile">Profile</NavLink >
+            </li>
+            <li className="nav-item">
+              <NavLink  className="nav-link" to="/logout">Logout</NavLink >
             </li>
           </ul>
         </div>
