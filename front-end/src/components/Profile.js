@@ -8,10 +8,14 @@ function Profile() {
     name: '',
     email: '',
     batch: '',
-    rollNo: '',
+    rollno: '',
     phone: '',
     field: '',
+    about: '',
     profilePicture: '',
+    facebook: '',
+    linkedin: '',
+    instagram: '',
   });
   const [isEditing, setIsEditing] = useState(false);
   const [profileImage, setProfileImage] = useState('');
@@ -54,9 +58,13 @@ function Profile() {
       const formData = new FormData();
       formData.append('name', userData.name);
       formData.append('batch', userData.batch);
-      formData.append('rollno', userData.rollNo);
+      formData.append('rollno', userData.rollno);
       formData.append('phone', userData.phone);
       formData.append('field', userData.field);
+      formData.append('about', userData.about);
+      formData.append('facebook', userData.facebook);
+      formData.append('linkedin', userData.linkedin);
+      formData.append('instagram', userData.instagram);
 
       // Send only the file in the form data
       if (userData.profilePicture instanceof File) {
@@ -170,8 +178,8 @@ function Profile() {
                             type="text"
                             className="form-control"
                             placeholder="Roll No"
-                            value={userData.rollNo}
-                            name="rollNo"
+                            value={userData.rollno}
+                            name="rollno"
                             onChange={handleInputChange}
                           />
                         </div>
@@ -200,14 +208,79 @@ function Profile() {
                           />
                         </div>
                       </div>
-                      <div className="mt-5 text-center">
-                        <button
-                          className="btn btn-primary profile-button"
-                          type="button"
-                          onClick={handleSaveButtonClick}
-                        >
-                          Save Profile
-                        </button>
+                      <div className="row mt-3">
+                        <div className="col-md-12">
+                          <label className="labels">About</label>
+                          <textarea
+                            className="form-control"
+                            placeholder="About"
+                            value={userData.about}
+                            name="about"
+                            onChange={handleInputChange}
+                          />
+                        </div>
+                      </div>
+                      <div className="row mt-3">
+                        <div className="col-md-6">
+                          <label className="labels">Facebook</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Facebook"
+                            value={userData.facebook}
+                            name="facebook"
+                            onChange={handleInputChange}
+                          />
+                        </div>
+                        <div className="col-md-6">
+                          <label className="labels">LinkedIn</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="LinkedIn"
+                            value={userData.linkedin}
+                            name="linkedin"
+                            onChange={handleInputChange}
+                          />
+                        </div>
+                      </div>
+                      <div className="row mt-3">
+                        <div className="col-md-6">
+                          <label className="labels">Instagram</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Instagram"
+                            value={userData.instagram}
+                            name="instagram"
+                            onChange={handleInputChange}
+                          />
+                        </div>
+                      </div>
+                      <div className="mt-5 text-right">
+                        {!isEditing ? (
+                          <button
+                            className="btn btn-primary profile-edit-btn"
+                            onClick={handleEditButtonClick}
+                          >
+                            Edit Profile
+                          </button>
+                        ) : (
+                          <>
+                            <button
+                              className="btn btn-primary profile-edit-btn"
+                              onClick={handleSaveButtonClick}
+                            >
+                              Save
+                            </button>
+                            <button
+                              className="btn btn-secondary profile-edit-btn"
+                              onClick={() => setIsEditing(false)}
+                            >
+                              Cancel
+                            </button>
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>

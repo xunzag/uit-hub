@@ -132,7 +132,7 @@ const storage = multer.diskStorage({
   
   router.put('/profile', authenticate, upload.single('profilePicture'), async (req, res) => {
     try {
-      const { name, batch, rollno, phone, field } = req.body;
+      const { name, batch, rollno, phone, field, about, facebook, linkedin, instagram } = req.body;
       const user = req.rootUser;
   
       if (name) user.name = name;
@@ -140,6 +140,10 @@ const storage = multer.diskStorage({
       if (rollno) user.rollno = rollno;
       if (phone) user.phone = phone;
       if (field) user.field = field;
+      if (about) user.about = about;
+      if (facebook) user.facebook = facebook;
+      if (linkedin) user.linkedin = linkedin;
+      if (instagram) user.instagram = instagram;
   
       if (req.file) {
         user.profilePicture = req.file.filename;
@@ -154,6 +158,8 @@ const storage = multer.diskStorage({
       res.status(500).json({ error: 'Internal server error' });
     }
   });
+  
+  
   
 
   router.get('/users', requireAuth, async (req, res) => {

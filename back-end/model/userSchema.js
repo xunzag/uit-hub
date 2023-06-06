@@ -5,47 +5,59 @@ const jwt = require('jsonwebtoken');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
-    required: true
+    required: true,
   },
   batch: {
     type: String,
-    required: true
+    required: true,
   },
   rollno: {
     type: String,
-    required: true
+    required: true,
   },
   phone: {
     type: String,
-    required: true
+    required: true,
   },
   field: {
     type: String,
-    required: true
+    required: true,
+  },
+  about: {
+    type: String,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   cpassword: {
     type: String,
-    required: true
+    required: true,
   },
   profilePicture: {
-    type: String
+    type: String,
+  },
+  facebook: {
+    type: String,
+  },
+  linkedin: {
+    type: String,
+  },
+  instagram: {
+    type: String,
   },
   tokens: [
     {
       token: {
         type: String,
-        required: true
-      }
-    }
-  ]
+        required: true,
+      },
+    },
+  ],
 });
 
 // hoshiyari
