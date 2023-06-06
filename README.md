@@ -15,8 +15,6 @@ UIT Student Hub is a web application currently under development, built on the M
 - User Registration: Students can create an account and register themselves on the platform.
 - User Profile: Each student can create and manage their profile, including personal information, educational background, skills, and interests.
 - Search and Connect: Students can search for other students within their university based on various criteria such as course, interests, or skills and connect with them.
-- Messaging: Users can send messages to other students to initiate conversations and build connections.
-- Notifications: Users receive notifications for new messages, connection requests, and other relevant activities.
 
 ## Installation
 
